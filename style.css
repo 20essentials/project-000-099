@@ -1,0 +1,244 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+  display: flex;
+  flex-wrap: wrap;
+  place-content: center;
+  min-height: 100dvh;
+  background-image: url('assets/fondo.avif');
+  background-size: 300px;
+  perspective: 1000px;
+  font-size: 16px;
+}
+
+.wrapper {
+  --green-light-with-opacity: #77dd7744;
+  --green-light-without-opacity: #77dd77;
+  --white-transparent: #fff4;
+  position: relative;
+  width: 600px;
+  height: 280px;
+  box-shadow: inset 0 0 0 2px var(--white-transparent);
+  padding: 24px;
+  border-radius: 8px;
+  transition: 0s;
+  pointer-events: none;
+  transform: scale(.8);
+
+  .ticket {
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 0 2px var(--green-light-with-opacity);
+    border-radius: 9px;
+    position: relative;
+
+    .container-left-information {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      place-content: center;
+
+      .foto {
+        width: 3rem;
+        height: 3rem;
+        display: flex;
+        flex-wrap: wrap;
+        place-content: center;
+
+        img {
+          width: 80%;
+          height: 80%;
+          border-radius: 50%;
+        }
+      }
+
+      .data {
+        padding: .4rem;
+
+        align-content: center;
+        color: #fff;
+
+
+        h4 {
+          font-size: .8rem;
+          font-style: italic;
+        }
+
+        h3 {
+          font-size: 1rem;
+        }
+      }
+    }
+
+    .triangle-rectangle {
+      position: absolute;
+      background-color: var(--green-light-with-opacity);
+      right: 0;
+      top: 0;
+      width: 30%;
+      height: 40px;
+      clip-path: polygon(0 0, 100% 0%, 100% 100%, 30% 100%);
+      display: flex;
+      flex-wrap: wrap;
+      place-content: center;
+      padding-left: 1.3rem;
+
+      .container-triangles {
+        width: 30px;
+        height: 30px;
+        position: relative;
+
+        .triangle {
+          width: 16px;
+          height: 14px;
+          background-color: var(--green-light-without-opacity);
+          clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-70%, -50%);
+        }
+
+        .triangle-2 {
+          transform: scale(.8) translate(-50%, -30%);
+          background-color: #fff;
+        }
+      }
+
+      .code {
+        align-content: center;
+        font-weight: 900;
+        color: #fffa;
+        font-size: .8rem;
+      }
+    }
+
+    .container-logo-vite {
+      --size: 130px;
+      width: var(--size);
+      height: var(--size);
+      position: absolute;
+      left: 5%;
+      bottom: 10%;
+      border-radius: 50%;
+      align-content: center;
+
+      &::before {
+        content: '';
+        display: block;
+        background-color: #fffa;
+        background-image: linear-gradient(to bottom,
+            #fff,
+            var(--green-light-without-opacity));
+        filter: blur(50px);
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: inherit;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+      }
+
+      .vite-logo {
+        display: block;
+
+        width: 70%;
+        height: 70%;
+        margin-inline: auto;
+      }
+    }
+
+    .central-title {
+      position: absolute;
+      right: 50px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #fffd;
+
+      h2 {
+        font-size: 1.7rem;
+      }
+
+      h1 {
+        font-size: 2.3rem;
+        background-image: linear-gradient(to right, #faed27, #47caff, #bd34fe);
+        background-clip: text;
+        color: transparent;
+      }
+    }
+
+    .legend {
+      position: absolute;
+      right: 15px;
+      bottom: 15px;
+      font-size: 10px;
+
+      h3 {
+        color: #fffd;
+      }
+
+      .violet-title {
+        color: #c1a6f8;
+
+        &::after {
+          content: '\26A1';
+        }
+      }
+
+      .orange-title {
+        color: #eec983;
+      }
+
+      .title-right {
+        text-align: right;
+      }
+    }
+  }
+
+  .fondo {
+    position: absolute;
+    inset: 0;
+    background-color: #fff1;
+    filter: blur(3px);
+  }
+}
+
+@media (width <=1000px) and (orientation: portrait) {
+  .wrapper {
+    width: 280px;
+    height: 600px;
+
+
+    .ticket {
+      .container-left-information {
+        top: 50px;
+      }
+
+      .triangle-rectangle {
+        width: 55%;
+      }
+
+      .central-title {
+        width: 100%;
+        right: 0;
+        top: 40%;
+        text-align: center;
+      }
+
+      .container-logo-vite {
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 15%;
+      }
+    }
+  }
+}
